@@ -9,7 +9,7 @@ var express = require('express'),
 
 //var mdb = require('mdb')
 var adodb = require('node-adodb');
-var conn = ADODB.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=node-adodb.mdb;');
+//var conn = ADODB.open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=node-adodb.mdb;');
 
 
 
@@ -83,27 +83,31 @@ connection
 app.post('/sendInsertVendor', function(req, res) {
 	console.log("is doing something")
 	var inputs = req.body
-	console.log('Body: ', body)
+	console.log('Body: ', inputs)
 
-	conn.execute('INSERT INTO vendors(Company name) VALUES ("'+inputs.companyName+'")')	//, UserSex, UserAge) VALUES ("Newton", "Male", 25)')
+	var insertQuery = 'INSERT INTO vendors("Company name") VALUES ("'+inputs.companyName+'")';
+	console.log(insertQuery)
+/*	conn.execute(insertQuery)	//, UserSex, UserAge) VALUES ("Newton", "Male", 25)')
 	    .on('done', function (data){
 	    	console.log('Result:'.green.bold, JSON.stringify(data, null, '  ').bold);
-	    	conn.execute('INSERT INTO contact information(First Name, Last Name, Phone Number, Email Address, Street Address, City, State, Company name)
- VALUES ("'+inputs.firstName+","+inputs.lastName+","+inputs.phone+","+inputs.email+","+inputs.address+","+inputs.city+","+inputs.state+","+inputs.companyName+'")')	//, UserSex, UserAge) VALUES ("Newton", "Male", 25)')
-		    .on('done', function (data){
+	    	/*var query = "INSERT INTO contact information(First Name, Last Name, Phone Number, Email Address, Street Address, City, State, Company name)
+ VALUES ("+inputs.firstName+","+inputs.lastName+","+inputs.phone+","+inputs.email+","+inputs.address+","+inputs.city+","+inputs.state+","+inputs.companyName+")";
+	    	conn.execute(query)
+	    	.on('done', function (data){
 			    console.log('Result:'.green.bold, JSON.stringify(data, null, '  ').bold);
 				res.send({
 					success:true
 				})
-			})
-	    })
+			})*/
+/*	    })
 	    .on('fail', function (data){
 	    	console.log("Error inserting information")
 	    	res.send(JSON.stringify({message:"Error inserting information", err:true}))
-	    });
+	    });*/
 })
 
-app.post('/sendInsertProduct', function(req, res){
+//UNCOMMENT THIS**********
+/*app.post('/sendInsertProduct', function(req, res){
 	var inputs = req.body;
 	conn.execute('INSERT INTO products (Product Name, Product Description, MSRP, Size of Product, Size of Packaging, Weight, Quantity, Uses/Application, Distribution Location, Company Name)
 	VALUES ("'+inputs.productName+'")')	//, UserSex, UserAge) VALUES ("Newton", "Male", 25)')
@@ -113,9 +117,11 @@ app.post('/sendInsertProduct', function(req, res){
 	    		success:true
 	    	})
 	    })
-})
+})*/
+//UNCOMMENT THIS**********
 
-//app.listen(4000);
+
+app.listen(4000);
 
 //delete a politcical rep query
 /*app.post('/deletePoliticalRep', function(req,res){
@@ -206,10 +212,10 @@ app.post('/updatePoliticalRep', function(req, res) {
 //	res.render('shuffle/index');
 //})
 
-*/
+
 var port = process.env.PORT || 8080;
 //create basic express server
 app.listen(port, function () {
-	console.log('Listening on port' + port)
-})
+	console.log('Listening on port', port)
+})*/
 

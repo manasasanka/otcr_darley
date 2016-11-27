@@ -10,7 +10,6 @@
     
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="css/nivo-lightbox.css" rel="stylesheet" />
     <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
     <link href="css/owl.carousel.css" rel="stylesheet" media="screen" />
@@ -43,32 +42,38 @@
         </div>
     </section>
     
+
+
+    <!--TODO: ADD REQUIRED CLASS
+action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"
+  -->
     <section id = "newVendor" class = "row input text-center">
         <h3>Insert New Vendor Information</h3>
-        <form id ="inpForm">
+        <form id ="inpForm" method="post" action"insertVendor.php">
             <div class="form-group">
-                Company Name<input class="form-control" id ="companyName" placeholder="i.e.Starbucks"></div>
+                Company Name<star>*</star><input type="text" class="form-control" name ="VendorArray[companyName]" placeholder="i.e.Starbucks"><?php echo $nameErr;?>
+            </div>
                 <p>Please input a form of contact with this vendor:</p>
                 <div class="form-group">
-                  First Name<input class="form-control" id="firstName" placeholder="Jane">
+                  First Name<input type="text" class="form-control" name ="VendorArray[firstName]" placeholder="Jane"><?php echo $_POST["VendorArray[firstName]"]?>
                 </div>
               <div class="form-group">
-                Last Name<input class="form-control" id="lastName" placeholder="Doe">
+                Last Name<input type="text" class="form-control" name ="VendorArray[lastName]" placeholder="Doe">
               </div>
               <div class="form-group">
-                Phone Number<input type="tel" class="form-control" id="phone" name="phoneNumber" placeholder="xxx-xxx-xxx">
+                Phone Number<input type="tel" class="form-control" name ="VendorArray[phone]" placeholder="xxx-xxx-xxx">
               </div>
               <div class="form-group">
-                Email<input type="email" class="form-control" id="email" name="email" placeholder="jane@gmail.com">
+                Email<star>*</star><input type="email" class="form-control" name ="VendorArray[email]" placeholder="jane@gmail.com"><?php echo $emailErr;?>
               </div>
               <div class="form-group">
-                Street Address<input class="form-control" id="address" name="address" placeholder="123 Lake Dr.">
+                Street Address<input type="text" class="form-control" name ="VendorArray[address]"  placeholder="123 Lake Dr.">
               </div>
               <div class="form-group">
-                City<input class="form-control" id="city" name="city" placeholder="Chicago">
+                City<input type="text" class="form-control" name ="VendorArray[city]" placeholder="Chicago">
               </div>
               <div class="form-group">
-                State<input class="form-control" id="state" name="state" placeholder="Illinois">
+                State<input type="text" class="form-control" name ="VendorArray[state]" name="state" placeholder="Illinois">
               </div>
 
             <button type = "button submit" class="btn btn-default" id = "submit_vendor_insert">
@@ -76,6 +81,10 @@
             </button>
         </form>
     </section>
+
+    
+
+
 
     <section id = "newProduct" class = "row input text-center">
         <h3>New Product</h3>
@@ -196,39 +205,7 @@
   
     </table>
 
-
-    <!-- Section: Insert -->
-    <section id="Insert" class=" color-dark bg-white">
-        <div class="container marginbot-50">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
-                    <div class="section-heading text-center">
-                    <h2 class="h-bold">Insert</h2>
-                    <div class="divider-header"></div>
-                    <h3>Enter Political Representative Information</h3>
-                    <form name = "insert_form">
-                        Name:<br>
-                        <input type="text" name="polname"><br>
-                        State:<br>
-                        <input type="text" name="state"><br>
-                        Term begin:<br>
-                        <input type="text" name="termBegin"><br>
-                        Term end:<br>
-                        <input type="text" name="termEnd"><br>
-                        House name:<br>
-                        <input type="text" name="houseName"><br>
-                        Party affiliation:<br>
-                        <input type="text" name="partyAffiliation"><br>
-                                                       
-                    <p>
-                        <button type = "button" id = "submit_insert_form">
-                            Submit
-                        </button>
-                    </p>
-                    </form>
-
-                     <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+     <!--         <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
                     <script type="application/javascript">
               
                          document.getElementById("submit_insert_form").addEventListener("click", submit)
@@ -256,141 +233,10 @@
                         }
               
                      </script>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-    <!-- /Section: insert -->
-
-<!-- Section: update -->
-    <section id="Update" class="home-section color-dark bg-white">
-        <div class="container marginbot-50">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
-                    <div class="section-heading text-center">
-                    <h2 class="h-bold">Update</h2>
-                    <div class="divider-header"></div>
-                    <h3>Enter Political Representative Information</h3>
-                    <form name = "update_form">
-                        Name:<br>
-                        <input type="text" name="polname"><br>
-                        State:<br>
-                        <input type="text" name="state"><br>
-                        Term begin:<br>
-                        <input type="text" name="termBegin"><br>
-                        Term end:<br>
-                        <input type="text" name="termEnd"><br>
-                        House name:<br>
-                        <input type="text" name="houseName"><br>
-                        Party affiliation:<br>
-                        <input type="text" name="partyAffiliation"><br>
-                    <p>
-                        <button type = "button" id = "submit_update_form">
-                            Submit
-                        </button>
-                    </p>
-                    </form>
-
-                     <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-                    <script type="application/javascript">
-              
-                         document.getElementById("submit_update_form").addEventListener("click", submit)
-                        function submit()
-                        {
-                            var form = document.forms['update_form']
-                            var inputs=form.getElementsByTagName('input')
-                            var data = {}
-                            for(var i = 0; i<inputs.length; i++)
-                            {
-                                var input = inputs[i]
-                                data[input.name] = input.value
-                            }
-                             $.ajax({
-                                type:'POST',
-                                data: JSON.stringify(data),
-                                url: '/updatePoliticalRep',
-                                dataType: 'json',
-                                contentType: 'application/json; charset=UTF-8',
-                                success:success(data)
-                             }) 
-                        }
-                        function success(data) {
-                            console.log('Success: ', data)
-                        }
-                    </script>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
+                    -->
 
 
 
-
-<!-- Section: remove -->
-    <section id="Remove" class="home-section color-dark bg-white">
-        <div class="container marginbot-50">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <div class="wow flipInY" data-wow-offset="0" data-wow-delay="0.4s">
-                    <div class="section-heading text-center">
-                    <h2 class="h-bold">Remove</h2>
-                    <div class="divider-header"></div>
-                    <h3>Enter Political Representative Information</h3>
-                    <form name = "remove_form">
-                        Name:<br>
-                        <input type="text" name="polname"><br>
-                        State:<br>
-                        <input type="text" name="state"><br>                              
-                    <p>
-                        <button type = "button" id = "submit_remove_form">
-                            Submit
-                        </button>
-                    </p>
-                    </form>
-
-                     <script type = "text/javaspcript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-                    <script type="application/javascript">
-                        document.getElementById("submit_remove_form").addEventListener("click", submit)
-                        function submit()
-                        {
-                            var form = document.forms['remove_form']
-                            var inputs=form.getElementsByTagName('input')
-                            var data = {}
-                            for(var i = 0; i<inputs.length; i++)
-                            {
-                                var input = inputs[i]
-                                data[input.name] = input.value
-                            }
-                             $.ajax({
-                                type:'POST',
-                                data: JSON.stringify(data),
-                                url: '/deletePoliticalRep',
-                                dataType: 'json',
-                                contentType: 'application/json; charset=UTF-8',
-                                success:success(data)
-                             }) 
-                        }
-                        function success(data) {
-                            console.log('Success: ', data)
-                        }
-                    </script>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
 
 <!-- Section: search -->
     <section id="Search" class="home-section color-dark bg-white">
@@ -513,7 +359,7 @@
     <script src="js/nivo-lightbox.min.js"></script>
 
     <script type = "text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-    <script src = "js/script.js"></script>
+    <!--<script src = "js/script.js"></script>-->
 
 
 </body>
