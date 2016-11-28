@@ -9,17 +9,22 @@ star {
 }
 
 section {
-	margin:50px;
+	margin:50px auto;
+}
+
+form {
+	width:60%;
+	margin: 10px auto;
 }
 
 .input{
 	color: black;
 	padding:100px;
-	width:60%;
 }
 
 #home{
 	text-align: center;
+	height:100%;
 }
 #homeText{
 	margin:0 auto;

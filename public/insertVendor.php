@@ -1,11 +1,31 @@
-<html>
-<body>
-
 <?php
     // define variables and set to empty values
     $companyName =$nameErr = $emailErr = $email = "";
-    echo "HERE";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+ //  $cmp = isset($_POST['json']) ? $_POST['json'] : null;
+ //   $dat = var_dump(json_decode($cmp, true));
+
+  //  $val = $_POST['str'];
+    
+    $val = file_get_contents('php://input');
+    $res = json_decode($val, true);
+    //var_dump($val);
+
+    $city = $res["city"];
+    $companyName = $res["companyName"];
+    $firstName = $res["firstName"];
+    $lastName = $res["lastName"];
+    $phone = $res["phone"];
+    $email = $res["email"];
+    $address = $res["address"];
+    $state = $res["state"];
+
+    echo "VAL is $first";
+
+    print('{}');
+
+
+    /*if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["VendorArray[companyName]"])) {
             $nameErr = "Company name is required";
         } else {
@@ -35,9 +55,10 @@
       $data = htmlspecialchars($data);
       return $data;
     }
-
+*/
 
     $dbName = $_SERVER["DOCUMENT_ROOT"] . "/DarleyDatabse.accdb";
+    echo " in $dbName and ";
     if (!file_exists($dbName)) {
         die("Could not find database file.");
     }
@@ -48,8 +69,7 @@
     $sql .= "VALUES (" . $db->quote($strName) . ", " . $db->quote($strDescription) . ", " . $strPrice . ", " . $db->quote($strStatus) . ")";
     */
     //insert into vendors
-    $sql = "INSERT INTO vendors(Company name) VALUES (" . $db->quote($VendorArray[companyName]) .")";
-
+    $sql = "INSERT INTO vendors(Company name) VALUES (" . $db->quote($companyName) .")";
 
 
     //INSERT INTO products VALUES (Product Name, Product Description, MSRP, Size of Product, Size of Packaging, Weight, Quantity, Uses/Application, Distribution Location, Company Name)
@@ -58,7 +78,13 @@
 
     $db->query($sql);
 
-?>
+    $sql = "INSERT INTO contact information(First Name, Last Name, Phone Number, Email Address, Street Address, City, State, Company name)
+ VALUES ("
+ . $db->quote($firstName) . ", " . $db->quote($lastName) . ", " . $db->quote($phone) .
+ ", " . $db->quote($email) .", " . $db->quote($address) .", " . $db->quote($city) . 
+ ", " . $db->quote($state) .", " . $db->quote($companyName) .")";
 
-</body>
-</html>
+        
+    $db->query($sql);
+
+?>
