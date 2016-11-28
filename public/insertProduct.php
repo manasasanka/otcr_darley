@@ -20,7 +20,7 @@
 
     print('{}');
 
-    $dbName = $_SERVER["DOCUMENT_ROOT"] . "/DarleyDatabse.accdb";
+    $dbName = $_SERVER["DOCUMENT_ROOT"] . "/DarleyDatabase.accdb";
     echo " in $dbName and ";
     if (!file_exists($dbName)) {
         die("Could not find database file.");

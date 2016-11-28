@@ -7,16 +7,15 @@
 
     $companyName = $res["companyName"];
 
-    echo "COMP is $companyName";
 
 //    print('{}');
 
-    $dbName = $_SERVER["DOCUMENT_ROOT"] . "/DarleyDatabse.accdb";
-    echo " in $dbName and ";
+    $dbName = $_SERVER["DOCUMENT_ROOT"] . "/DarleyDatabase.accdb";
+
     if (!file_exists($dbName)) {
         die("Could not find database file.");
     }
-    $db = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+    $db = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
     /*$sql  = "INSERT INTO vendors";
     $sql .= "       (name, description, price, sale_status) ";

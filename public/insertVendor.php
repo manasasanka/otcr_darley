@@ -20,7 +20,7 @@
     $address = $res["address"];
     $state = $res["state"];
 
-    echo "VAL is $first";
+    echo "VAL is $res";
 
     print('{}');
 
@@ -57,12 +57,12 @@
     }
 */
 
-    $dbName = $_SERVER["DOCUMENT_ROOT"] . "/DarleyDatabse.accdb";
+    $dbName = $_SERVER["DOCUMENT_ROOT"] . "/DarleyDatabase.accdb";
     echo " in $dbName and ";
     if (!file_exists($dbName)) {
         die("Could not find database file.");
     }
-    $db = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=;");
+    $db = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=$dbName; Uid=; Pwd=;");
 
     /*$sql  = "INSERT INTO vendors";
     $sql .= "       (name, description, price, sale_status) ";
