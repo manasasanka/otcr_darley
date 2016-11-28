@@ -1,0 +1,11 @@
+run "php -S localhost:4000" on terminal from "public" directory
+
+open localhost:4000
+
+use files in public folder:
+
+insertVendor.php
+insertProduct.php
+js/script.js
+index.html
+
